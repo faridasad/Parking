@@ -19,21 +19,11 @@ namespace Parking
         private int currentUser;
         List<int> numbers = new List<int>();
 
-
-
-
-
-
         public Form1()
         {
-
             InitializeComponent();
             totalBox.Text = Convert.ToString(total);
             availableBox.Text = Convert.ToString(available);
-
-
-
-
         }
 
         private void entry_button_Click(object sender, EventArgs e)
@@ -76,7 +66,6 @@ namespace Parking
             };
 
 
-
             for (int i = detailsBox.Items.Count - 1; i >= 0; i--)
             {
                 if (detailsBox.Items[i].ToString().StartsWith(Convert.ToString(requested_number)))
@@ -89,7 +78,6 @@ namespace Parking
                 }
             }
 
-
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -101,21 +89,27 @@ namespace Parking
             };
 
 
-            if (loginButton.Text == "Log in")
+            switch (loginButton.Text)
             {
-                currentUser = Convert.ToInt32(userInput.Text);
-                statusText.Text = $"Logged in as {currentUser}!";
-                userInput.Text = Convert.ToString(currentUser);
-                userInput.ReadOnly = true;
-                loginButton.Text = "Log out";
-            }
-            else if (loginButton.Text == "Log out")
-            {
-                currentUser = -1;
-                statusText.Text = "Logged out!";
-                userInput.Text = "";
-                userInput.ReadOnly = false;
-                loginButton.Text = "Log in";
+                case "Log in":
+                    currentUser = Convert.ToInt32(userInput.Text);
+                    statusText.Text = $"Logged in as {currentUser}!";
+                    userInput.Text = Convert.ToString(currentUser);
+                    userInput.ReadOnly = true;
+                    loginButton.Text = "Log out";
+                    break;
+
+                case "Log out":
+                    currentUser = -1;
+                    statusText.Text = "Logged out!";
+                    userInput.Text = "";
+                    userInput.ReadOnly = false;
+                    loginButton.Text = "Log in";
+                    break;
+
+                default:
+                    statusText.Text = "Somethin went wrong";
+                    break;
             }
         }
 
