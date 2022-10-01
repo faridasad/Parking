@@ -68,7 +68,7 @@ namespace Parking
 
             for (int i = detailsBox.Items.Count - 1; i >= 0; i--)
             {
-                if (detailsBox.Items[i].ToString().StartsWith(Convert.ToString(requested_number)))
+                if (detailsBox.Items[i].ToString().Split(' ')[0] == Convert.ToString(requested_number))
                 {
                     statusText.Text = "";
                     detailsBox.Items.RemoveAt(i);
